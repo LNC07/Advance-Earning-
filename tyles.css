@@ -10,13 +10,14 @@ body {
 }
 
 #app {
-    width: 100vw;
-    height: 100vh;
+    width: 72vw; /* 20% কমানো হয়েছে */
+    height: 72vh; /* 20% কমানো হয়েছে */
     background: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
 h2 {
@@ -26,6 +27,7 @@ h2 {
 form, #initial-buttons, #dashboard, #withdrawal-page, #task-page, #daily-task-page, #video-earning-page {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 input, select {
@@ -33,6 +35,8 @@ input, select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    width: 100%;
+    max-width: 400px;
 }
 
 button {
@@ -42,6 +46,8 @@ button {
     background: #28a745;
     color: #fff;
     cursor: pointer;
+    width: 100%;
+    max-width: 400px;
 }
 
 button:hover {
