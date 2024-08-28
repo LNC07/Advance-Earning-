@@ -1,19 +1,16 @@
-// Show Registration Form
+// Initial setup: show Registration and Login buttons
 document.getElementById('register-btn').addEventListener('click', function() {
     document.getElementById('initial-buttons').style.display = 'none';
     document.getElementById('registration-form').style.display = 'block';
 });
 
-// Show Login Form
 document.getElementById('login-btn').addEventListener('click', function() {
     document.getElementById('initial-buttons').style.display = 'none';
     document.getElementById('login-form').style.display = 'block';
 });
 
-// Back to Initial Buttons from Registration
-document.getElementById('back-to-initial').addEventListener('click', function() {
+document.getElementById('back-btn').addEventListener('click', function() {
     document.getElementById('registration-form').style.display = 'none';
-    document.getElementById('login-form').style.display = 'none';
     document.getElementById('initial-buttons').style.display = 'block';
 });
 
@@ -22,11 +19,16 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
+
+    // Store email and password in localStorage
     localStorage.setItem('email', email);
     localStorage.setItem('password', password);
     localStorage.setItem('balance', 0);
+
+    // Show success message and redirect to login
     alert('Account created successfully!');
-    window.location.href = "webapp.html"; // Update with the actual path if different
+    document.getElementById('registration-form').style.display = 'none';
+    document.getElementById('login-form').style.display = 'block';
 });
 
 // Login Form Submission
@@ -34,10 +36,12 @@ document.getElementById('signin-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
+
+    // Check if email and password match
     if(localStorage.getItem('email') === email && localStorage.getItem('password') === password) {
         showDashboard(email);
     } else {
-        alert('Invalid credentials!');
+        alert('Invalid email or password!');
     }
 });
 
@@ -56,7 +60,7 @@ document.getElementById('withdraw-btn').addEventListener('click', function() {
 });
 
 // Back to Dashboard from Withdrawal
-document.getElementById('back-to-dashboard-from-withdrawal').addEventListener('click', function() {
+document.getElementById('back-to-dashboard').addEventListener('click', function() {
     document.getElementById('withdrawal-page').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';
 });
@@ -71,38 +75,15 @@ document.getElementById('withdrawal-form').addEventListener('submit', function(e
     document.getElementById('dashboard').style.display = 'block';
 });
 
-// Task Button Click
+// Task, Daily Task, and Video Earning buttons can have similar event listeners to perform specific tasks
 document.getElementById('task-btn').addEventListener('click', function() {
-    document.getElementById('dashboard').style.display = 'none';
-    document.getElementById('task-page').style.display = 'block';
+    window.location.href = 'task.html'; // Redirect to task web app
 });
 
-// Back to Dashboard from Task Page
-document.getElementById('back-to-dashboard-from-task').addEventListener('click', function() {
-    document.getElementById('task-page').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
-});
-
-// Video Earning Button Click
-document.getElementById('video-earning-btn').addEventListener('click', function() {
-    document.getElementById('dashboard').style.display = 'none';
-    document.getElementById('video-earning-page').style.display = 'block';
-});
-
-// Back to Dashboard from Video Earning Page
-document.getElementById('back-to-dashboard-from-video-earning').addEventListener('click', function() {
-    document.getElementById('video-earning-page').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
-});
-
-// Daily Task Button Click
 document.getElementById('daily-task-btn').addEventListener('click', function() {
-    document.getElementById('dashboard').style.display = 'none';
-    document.getElementById('daily-task-page').style.display = 'block';
+    window.location.href = 'daily-task.html'; // Redirect to daily task web app
 });
 
-// Back to Dashboard from Daily Task Page
-document.getElementById('back-to-dashboard-from-daily-task').addEventListener('click', function() {
-    document.getElementById('daily-task-page').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
+document.getElementById('video-earning-btn').addEventListener('click', function() {
+    window.location.href = 'video-earning.html'; // Redirect to video earning web app
 });
